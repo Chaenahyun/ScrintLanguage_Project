@@ -1,7 +1,3 @@
-'''
-[main.py]
-메인모듈
-'''
 from tkinter import *
 from tkinter.font import *
 from search import *
