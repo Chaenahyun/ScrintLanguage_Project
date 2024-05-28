@@ -2,14 +2,14 @@ from tkinter import Label, PhotoImage
 from PIL import Image
 
 class LoadGIFImage:
-    def __init__(self, parent):
+    def __init__(self, parent, gif_path, x, y, speed=100):
         self.label = Label(parent, bg="white")
-        self.label.pack()
+        self.label.place(x=x, y=y)
 
         self.my_image_number = 0
 
         # GIF 파일의 실제 프레임 수를 자동으로 감지
-        self.image_path = 'gif.gif'  #Gif 파일 추가
+        self.image_path = gif_path
         self.image = Image.open(self.image_path)
         self.frames = [PhotoImage(file=self.image_path, format='gif -index %i' % i) for i in range(self.image.n_frames)]
 
@@ -17,7 +17,7 @@ class LoadGIFImage:
         self.label.config(image=self.frames[0])
 
         # 애니메이션 속도 설정 (밀리초 단위)
-        self.animation_speed = 400 # 예: 100 밀리초 = 0.1초
+        self.animation_speed = speed
 
         self.animate()  # 애니메이션 시작
 
