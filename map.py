@@ -31,7 +31,8 @@ class MapFrame:
 
     def connectMap(self):
         #지도 url열기
-        url = 'https://map.naver.com/p/'
+        # url = 'https://map.naver.com/p/'
+        url = 'https://map.naver.com/'
         option = '?sm=top_hty&fbm=1&ie=utf8&'
         query = 'query=' + urllib.parse.quote(self.mapEntry.get())
 

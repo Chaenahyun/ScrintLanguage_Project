@@ -54,8 +54,12 @@ class SearchFrame:
         html = req.text
 
         soup = BeautifulSoup(html, 'html.parser')
-        values = soup.find_all('faclt_nm')
+        academies = soup.find_all('faclt_nm')
+        telephones = soup.find_all('telno')
 
-        valueList = [x.text for x in values]
-        for x in range(len(valueList)):
-            self.academyListBox.insert(x, valueList[x])
+        academyList = [x.text for x in academies]
+        phoneList = [x.text for x in telephones]
+        for x in range(len(academyList)):
+            academy = academyList[x]
+            phone = phoneList[x]
+            self.academyListBox.insert(x, academy + '  ' + phone)
