@@ -40,11 +40,11 @@ class MainGUI:
         self.gifFrame.place(x=0, y=500)
 
         # 여러 GIF 로드
-        self.loadGIF1 = LoadGIFImage(self.gifFrame, 'gif1.gif', x=10, y=10, speed=100)
-        self.loadGIF2 = LoadGIFImage(self.gifFrame, 'gif2.gif', x=310, y=10, speed=200)
-        self.loadGIF3 = LoadGIFImage(self.gifFrame, 'gif3.gif', x=610, y=10, speed=300)
-        self.loadGIF4 = LoadGIFImage(self.gifFrame, 'gif4.gif', x=610, y=10, speed=300)
-        self.loadGIF5 = LoadGIFImage(self.gifFrame, 'gif5.gif', x=610, y=10, speed=300)
+        self.loadGIF1 = LoadGIFImage(self.gifFrame, 'resources/gif1.gif', x=10, y=10, speed=100)
+        self.loadGIF2 = LoadGIFImage(self.gifFrame, 'resources/gif2.gif', x=310, y=10, speed=200)
+        self.loadGIF3 = LoadGIFImage(self.gifFrame, 'resources/gif3.gif', x=610, y=10, speed=300)
+        self.loadGIF4 = LoadGIFImage(self.gifFrame, 'resources/gif4.gif', x=610, y=10, speed=300)
+        self.loadGIF5 = LoadGIFImage(self.gifFrame, 'resources/gif5.gif', x=610, y=10, speed=300)
 
         self.window.mainloop()
         pass

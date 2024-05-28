@@ -18,7 +18,7 @@ class MailFrame:
         self.Gmail.starttls()
         self.Gmail.login('copita4576@gmail.com', 'tyfykowssoflpogd')
 
-        self.image = PhotoImage(file="mail.png")
+        self.image = PhotoImage(file="resources/mail.png")
         self.initButton(frame)
 
     def initButton(self, frame):
