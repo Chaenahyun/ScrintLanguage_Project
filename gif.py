@@ -9,7 +9,7 @@ class LoadGIFImage:
         self.my_image_number = 0
 
         # GIF 파일의 실제 프레임 수를 자동으로 감지
-        self.image_path = 'gif.gif'
+        self.image_path = 'gif.gif'  #Gif 파일 추가
         self.image = Image.open(self.image_path)
         self.frames = [PhotoImage(file=self.image_path, format='gif -index %i' % i) for i in range(self.image.n_frames)]
 
@@ -17,7 +17,7 @@ class LoadGIFImage:
         self.label.config(image=self.frames[0])
 
         # 애니메이션 속도 설정 (밀리초 단위)
-        self.animation_speed = 100  # 예: 100 밀리초 = 0.1초
+        self.animation_speed = 400 # 예: 100 밀리초 = 0.1초
 
         self.animate()  # 애니메이션 시작
 
