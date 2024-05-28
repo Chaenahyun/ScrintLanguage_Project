@@ -2,10 +2,8 @@ from xml import *
 from tkinter import *
 from tkinter.font import *
 import tkinter.ttk
-#api에 사용할 모듈
-import urllib.request
-#웹 브라우저 열기에 사용할 모듈
-import webbrowser
+import urllib.request #api
+import webbrowser #webbrowser open
 
 client_id = '4j25bu6e3m'
 client_secret = 'bWGvQe4gKJ7Hqm3SxvTW1u7OsOnV4HAsb5efTTO9'
@@ -17,11 +15,9 @@ class MapFrame:
         mapLabel = Label(frame, text='지도', font=self.Labelfont)
         mapLabel.place(x=15, y=25)
 
-        #네이버 지도 연결해서 위치 보여주는 버튼
-
-        # 검색 할 라벨 생성
+        # 검색 라벨 생성
         self.initEntry(frame)
-        # 네이버 지도 연결해서 위치 보여주는 버튼
+        #지도 연결 버튼
         self.initButton(frame)
 
     def initEntry(self, frame):
@@ -31,7 +27,7 @@ class MapFrame:
     def initButton(self, frame):
         self.mapButton = Button(frame, text='열기', width=4, height=1, relief='raised',
                                 font=Font(family='italic', size=15, weight='bold'), command=self.connectMap)
-        self.mapButton.place(x=100, y=25)
+        self.mapButton.place(x=350, y=25)
 
     def connectMap(self):
         #지도 url열기
