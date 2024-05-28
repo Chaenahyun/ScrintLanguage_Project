@@ -3,6 +3,7 @@ from tkinter.font import *
 from tkinter.ttk import *
 from search import *
 from map import *
+from gif import LoadGIFImage
 
 frameHeight = 580
 WIDTH = 960
@@ -30,6 +31,11 @@ class MainGUI:
         #telegram., mail icon frame
         self.funcFrame = Frame(self.window, width=95, height=frameHeight - 50, bg='light cyan')
         self.funcFrame.place(x=855, y=100)
+
+        #gif
+        self.gifFrame = Frame(self.window, width=WIDTH, height=frameHeight, bg='white')
+        self.gifFrame.place(x=170, y=220)
+        self.loadGIF = LoadGIFImage(self.gifFrame)
 
 
         self.window.mainloop()
