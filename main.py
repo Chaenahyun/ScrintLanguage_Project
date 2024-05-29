@@ -5,6 +5,8 @@ from search import *
 from map import *
 from mail import *
 from telegram import *
+#gif
+from gif import LoadGIFImage1,  LoadGIFImage2,  LoadGIFImage3,  LoadGIFImage4, LoadGIFImage5, LoadCatGIFImage
 
 frameHeight = 580
 WIDTH = 960
@@ -34,6 +36,33 @@ class MainGUI:
         MailFrame(self.funcFrame)
         TelegramFrame(self.funcFrame)
 
+        ##GIF
+        # Load GIF1
+        self.gifFrame = Frame(self.window, width=40, height=40, bg='light pink')
+        self.gifFrame.place(x=210, y=215)
+        self.loadGIF1 = LoadGIFImage1(self.gifFrame, 'resources/gif1.gif', x=0, y= 0, speed=200)
+        # Load GIF2
+        self.gifFrame = Frame(self.window, width=50, height=50, bg='mistyrose')
+        self.gifFrame.place(x=300, y=10)
+        self.loadGIF2 = LoadGIFImage2(self.gifFrame, 'resources/gif2.gif', x=0, y=0, speed=300)
+        # Load GIF3
+        self.gifFrame = Frame(self.window, width=40, height=40, bg='light pink')
+        self.gifFrame.place(x=525, y=215)
+        self.loadGIF3 = LoadGIFImage3(self.gifFrame, 'resources/gif3.gif', x=0, y=0, speed=300)
+        # Load GIF4
+        self.gifFrame = Frame(self.window, width=100, height=40, bg='light pink')
+        self.gifFrame.place(x=700, y=90)
+        self.loadGIF3 = LoadGIFImage4(self.gifFrame, 'resources/gif4.gif', x=0, y=0, speed=300)
         self.window.mainloop()
+        # Load GIF5
+        self.gifFrame = Frame(self.window, width=40, height=40, bg='light pink')
+        self.gifFrame.place(x=0, y=0)
+        self.loadGIF5 = LoadGIFImage5(self.gifFrame, 'resources/gif5.gif', x=0, y=0, speed=300)
+        self.window.mainloop()
+        # Load catGIF
+        self.gifFrame = Frame(self.window, width=20, height=20, bg='mistyrose')
+        self.gifFrame.place(x=895, y=600)
+        self.loadCatGIF = LoadCatGIFImage(self.gifFrame, 'resources/cat.gif', x=0, y=0, speed=300)
+
 
 MainGUI()
