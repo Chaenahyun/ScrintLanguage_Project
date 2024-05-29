@@ -6,7 +6,7 @@ from map import *
 from mail import *
 from telegram import *
 #gif
-from gif import LoadGIFImage1,  LoadGIFImage2,  LoadGIFImage3,  LoadGIFImage4, LoadGIFImage5, LoadCatGIFImage
+from gif import LoadGIFImage1,  LoadGIFImage2,  LoadGIFImage3,  LoadGIFImage4, LoadGIFImage5, LoadCatGIFImage, LoadTitleImage
 
 frameHeight = 580
 WIDTH = 960
@@ -63,6 +63,10 @@ class MainGUI:
         self.gifFrame = Frame(self.window, width=20, height=20, bg='mistyrose')
         self.gifFrame.place(x=895, y=600)
         self.loadCatGIF = LoadCatGIFImage(self.gifFrame, 'resources/cat.gif', x=0, y=0, speed=300)
+        # Load TitleGIF
+        self.gifFrame = Frame(self.window, width=500, height=500, bg='mistyrose')
+        self.gifFrame.place(x=0, y=0)
+        self.loadTitleGIF = LoadTitleImage(self.gifFrame, 'resources/title_banner.png.gif', x=0, y=0, speed=300)
 
 
 MainGUI()
