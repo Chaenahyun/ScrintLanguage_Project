@@ -34,19 +34,28 @@ class MainGUI:
         self.funcFrame.place(x=855, y=100)
         MailFrame(self.funcFrame)
 
-        #Gif
-        # Load GIFs
-        self.gifFrame = Frame(self.window, width=WIDTH, height=frameHeight, bg='white')
-        self.gifFrame.place(x=0, y=500)
-
-        # 여러 GIF 로드
-        self.loadGIF1 = LoadGIFImage(self.gifFrame, 'resources/gif1.gif', x=10, y=10, speed=100)
-        self.loadGIF2 = LoadGIFImage(self.gifFrame, 'resources/gif2.gif', x=310, y=10, speed=200)
-        self.loadGIF3 = LoadGIFImage(self.gifFrame, 'resources/gif3.gif', x=610, y=10, speed=300)
-        self.loadGIF4 = LoadGIFImage(self.gifFrame, 'resources/gif4.gif', x=610, y=10, speed=300)
-        self.loadGIF5 = LoadGIFImage(self.gifFrame, 'resources/gif5.gif', x=610, y=10, speed=300)
+        # # Load GIFs
+        # gif_paths = [
+        #     'resources/gif1.gif',
+        #     'resources/gif2.gif',
+        #     'resources/gif3.gif',
+        #     'resources/gif4.gif',
+        #     'resources/gif5.gif'
+        # ]
+        # positions = [
+        #     (170, 220),
+        #     (370, 220),
+        #     (570, 220),
+        #     (170, 420),
+        #     (370, 420)
+        # ]
+        # speeds = [100, 200, 300, 300, 300]
+        #
+        # for i, (gif_path, pos, speed) in enumerate(zip(gif_paths, positions, speeds)):
+        #     gif_frame = Frame(self.window, width=200, height=200, bg='white')
+        #     gif_frame.place(x=pos[0], y=pos[1])
+        #     LoadGIFImage(gif_frame, gif_path, x=0, y=0, speed=speed)
 
         self.window.mainloop()
-        pass
 
 MainGUI()
