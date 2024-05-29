@@ -10,9 +10,9 @@ client_secret = 'bWGvQe4gKJ7Hqm3SxvTW1u7OsOnV4HAsb5efTTO9'
 
 class MapFrame:
     def __init__(self, frame):
-        self.Labelfont = Font(family='italic', weight='bold', slant='roman', size=20)
-        mapLabel = Label(frame, text='지도', font=self.Labelfont, bg='light green')
-        mapLabel.place(x=0, y=25)
+        self.Labelfont = Font(family='210 나무고딕 EB', weight='bold', slant='roman', size=20)
+        mapLabel = Label(frame, text='지도', font=self.Labelfont, bg='light pink')
+        mapLabel.place(x=3, y=35)
 
         # 검색 라벨 생성
         self.initEntry(frame)
@@ -21,12 +21,12 @@ class MapFrame:
 
     def initEntry(self, frame):
         self.mapEntry = Entry(frame, width=15, font=self.Labelfont)
-        self.mapEntry.place(x=75, y=25)
+        self.mapEntry.place(x=70, y=35)
 
     def initButton(self, frame):
-        self.mapButton = Button(frame, text='열기', width=4, height=1, relief='raised', bg='light cyan',
-                                font=Font(family='italic', size=15, weight='bold'), command=self.connectMap)
-        self.mapButton.place(x=325, y=25)
+        self.mapButton = Button(frame, text='열기', width=4, height=1, relief='raised', bg='mistyrose',
+                                font=Font(family='210 나무고딕 EB', size=15, weight='bold'), command=self.connectMap)
+        self.mapButton.place(x=310, y=35)
 
     def connectMap(self):
         #지도 url열기
