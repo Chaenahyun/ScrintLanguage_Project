@@ -41,6 +41,10 @@ class SearchFrame:
         Label(frame, text='학원 및 교습소 명', font=self.Labelfont, bg='light pink').place(x=15, y=160)
         self.academyListBox = Listbox(frame, selectmode='extended', width=50, height=20)
         self.academyListBox.place(x=15, y=210)
+        self.academyListBox.bind('<Double-1>', self.show_details) #더블클릭하면 세부정보
+
+        self.academy_details = []
+
 
         # book mark init
         notebook = tkinter.ttk.Notebook(frame, width=50, height=20)
@@ -51,6 +55,7 @@ class SearchFrame:
         # 북마크 리스트 박스
         self.bookmarkListBox = Listbox(frame, selectmode='extended', width=50, height=20)
         self.bookmarkListBox.place(x=450, y=210)
+
 
     def updateEmdList(self, event):
         selected_city = self.cityCombo.get()
@@ -105,17 +110,48 @@ class SearchFrame:
         soup = BeautifulSoup(html, features='xml')  # XML 파서 사용
         print("soup")
         print(soup)
-        academies = soup.find_all('FACLT_NM')
-        print("academies")
-        print(academies)
+        #academies = soup.find_all('FACLT_NM')
+        # print("academies")
+        # print(academies)
 
-        telephones = soup.find_all('TELNO')
-        academyList = [x.text for x in academies]
-        phoneList = [x.text for x in telephones]
+        # telephones = soup.find_all('TELNO')
+        # academyList = [x.text for x in academies]
+        # phoneList = [x.text for x in telephones]
 
 
-        for x in range(len(academyList)):
-            academy = academyList[x]
-            phone = phoneList[x]
-            self.academyListBox.insert(x, academy + '  ' + phone)
+        # for x in range(len(academyList)):
+        #     academy = academyList[x]
+        #     phone = phoneList[x]
+        #     self.academyListBox.insert(x, academy + '  ' + phone)
+
+        self.academy_details = []
+        for item in soup.find_all('row'):
+            academy_name = item.find('FACLT_NM').get_text() if item.find('FACLT_NM') else "N/A"
+            phone = item.find('TELNO').get_text() if item.find('TELNO') else "N/A"
+            address = item.find('REFINE_ROADNM_ADDR').get_text() if item.find('REFINE_ROADNM_ADDR') else "N/A"
+            representative = item.find('REPRSNTV_NM').get_text() if item.find('REPRSNTV_NM') else "없음"
+            self.academy_details.append((academy_name, phone, address, representative))
+            self.academyListBox.insert(END, f"{academy_name}  {phone}")
+
+    def show_details(self, event):
+        selected_index = self.academyListBox.curselection()[0]
+        selected_academy = self.academy_details[selected_index]
+
+        details_window = Toplevel()
+        details_window.title("학원 세부 정보")
+
+        frame = Frame(details_window)
+        frame.pack()
+
+        headers = ["학원명", "전화번호", "주소", "대표자명"]
+        for i, col_name in enumerate(headers):
+            label = Label(frame, text=col_name, font=("Helvetica", 14, "bold"))
+            label.grid(row=0, column=i)
+
+        data = selected_academy
+        for i, value in enumerate(data):
+            label = Label(frame, text=value, font=("Helvetica", 12))
+            label.grid(row=1, column=i)
+
+
 
