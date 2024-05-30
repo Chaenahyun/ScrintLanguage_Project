@@ -109,7 +109,7 @@ class LoadGIFImage4:
 
 class LoadGIFImage5:
     def __init__(self, parent, gif_path, x, y, speed=100):
-        self.label = Label(parent, bg="light pink")
+        self.label = Label(parent, bg="mistyrose")
         self.label.place(x=x, y=y)
 
         self.my_image_number = 0
@@ -117,8 +117,7 @@ class LoadGIFImage5:
         # GIF 파일의 실제 프레임 수를 자동으로 감지
         self.image_path = gif_path
         self.image = Image.open(self.image_path)
-        self.frames = [PhotoImage(file=self.image_path, format='gif -index %i' % i) for i in
-                           range(self.image.n_frames)]
+        self.frames = [PhotoImage(file=self.image_path, format='gif -index %i' % i) for i in range(self.image.n_frames)]
 
         # 이미지를 label에 설정
         self.label.config(image=self.frames[0])
@@ -133,6 +132,7 @@ class LoadGIFImage5:
         self.label.config(image=self.frames[self.my_image_number % len(self.frames)])
         self.my_image_number += 1
         self.label.after(self.animation_speed, self.animate)  # 애니메이션 프레임 갱신
+
 
 
 class LoadCatGIFImage:
