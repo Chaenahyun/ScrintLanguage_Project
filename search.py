@@ -4,9 +4,11 @@ import urllib.parse
 from tkinter import *
 from tkinter.font import Font
 import tkinter.ttk
+import subprocess
 
 open_api_key = '26f2848737a442ae8b5ac596428e106c'
 url = 'https://openapi.gg.go.kr/TninsttInstutM'
+
 
 class SearchFrame:
     def __init__(self, frame):
@@ -41,21 +43,21 @@ class SearchFrame:
         Label(frame, text='학원 및 교습소 명', font=self.Labelfont, bg='light pink').place(x=15, y=160)
         self.academyListBox = Listbox(frame, selectmode='extended', width=50, height=20)
         self.academyListBox.place(x=15, y=210)
-        self.academyListBox.bind('<Double-1>', self.show_details) #더블클릭하면 세부정보
+        self.academyListBox.bind('<Double-1>', self.show_details)  # 더블클릭하면 세부정보
 
         self.academy_details = []
-
 
         # book mark init
         notebook = tkinter.ttk.Notebook(frame, width=50, height=20)
 
         # 북마크 라벨
-        Label(frame, text='북마크', font=self.Labelfont, bg='light pink').place(x=450, y=160)
+        graph_label = Label(frame, text='그래프', font=self.Labelfont, bg='light pink')
+        graph_label.place(x=450, y=160)
+        graph_label.bind('<Double-1>', self.run_graph_script)
 
         # 북마크 리스트 박스
         self.bookmarkListBox = Listbox(frame, selectmode='extended', width=50, height=20)
         self.bookmarkListBox.place(x=450, y=210)
-
 
     def updateEmdList(self, event):
         selected_city = self.cityCombo.get()
@@ -110,14 +112,13 @@ class SearchFrame:
         soup = BeautifulSoup(html, features='xml')  # XML 파서 사용
         print("soup")
         print(soup)
-        #academies = soup.find_all('FACLT_NM')
+        # academies = soup.find_all('FACLT_NM')
         # print("academies")
         # print(academies)
 
         # telephones = soup.find_all('TELNO')
         # academyList = [x.text for x in academies]
         # phoneList = [x.text for x in telephones]
-
 
         # for x in range(len(academyList)):
         #     academy = academyList[x]
@@ -153,5 +154,6 @@ class SearchFrame:
             label = Label(frame, text=value, font=("Helvetica", 12))
             label.grid(row=1, column=i)
 
-
+    def run_graph_script(self, event):
+        subprocess.Popen(['python', 'graph.py'])
 
