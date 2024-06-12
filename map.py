@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter.font import *
-import tkinter.ttk
-import urllib.request #api
-import webbrowser #webbrowser open
+import urllib.parse
+import webview
 
 client_id = '4j25bu6e3m'
 client_secret = 'bWGvQe4gKJ7Hqm3SxvTW1u7OsOnV4HAsb5efTTO9'
@@ -16,7 +15,7 @@ class MapFrame:
 
         # 검색 라벨 생성
         self.initEntry(frame)
-        #지도 연결 버튼
+        # 지도 연결 버튼
         self.initButton(frame)
 
     def initEntry(self, frame):
@@ -29,14 +28,18 @@ class MapFrame:
         self.mapButton.place(x=310, y=35)
 
     def connectMap(self):
-        #지도 url열기
-        # url = 'https://map.naver.com/p/'
-        url = 'https://map.naver.com/'
-        option = '?sm=top_hty&fbm=1&ie=utf8&'
+        # 지도 url 생성
+        base_url = 'https://map.naver.com/v5/search/'
         if self.mapEntry.get() == '':
             return False
-        query = 'query=' + urllib.parse.quote(self.mapEntry.get())
+        query = urllib.parse.quote(self.mapEntry.get())
 
-        url_query = url+option+query
-        webbrowser.open_new(url_query)
-        pass
+        url_query = base_url + query
+
+        # 새로운 웹뷰 창을 열어 지도 표시
+        self.showMapWindow(url_query)
+
+    def showMapWindow(self, url):
+        webview.create_window('Naver Map', url)
+        webview.start()
+
